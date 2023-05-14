@@ -1,0 +1,1494 @@
+--> React Native
+
+=> Lecture - 1
+
+FileName -> App.js
+
+import React from 'react';
+import {Button, Text, View} from 'react-native';
+
+const heading = {
+  fontSize: 30,
+};
+
+const App = () => (
+  <View>
+    <Text style={heading}>Hello From Other Side</Text>
+    <Text style={heading}>Hello React Native </Text>
+    <Button title="Press Here"></Button>
+    <Text style={heading}>Hello World! </Text>
+    <Button title="Press Me"></Button>
+  </View>
+);
+
+export default App;
+
+
+=> Lecture 2 
+FileName -> App.js
+
+import React from 'react';
+import {Button, Text, View} from 'react-native';
+
+const heading = {
+  fontSize: 30,
+};
+
+let age = 20;
+var email = 'abc@gmail.com';
+function Language() {
+  return 'React Native';
+}
+
+const App = () => {
+  const name = 'Prince';
+  return (
+    <View>
+      <Text style={heading}> {name}</Text>
+      <Text style={heading}> {age}</Text>
+      <Text style={heading}> {email}</Text>
+      <Text style={heading}> {10 + 10}</Text>
+      <Text style={heading}> {Language()}</Text>
+      <Text style={heading}> {age >= 18 ? 'Above' : 'UnKnown age'}</Text>
+    </View>
+  );
+};
+
+export default App;
+
+
+=> Lecture - 3
+
+FileName -> App.js
+
+import React from 'react';
+import {Button, Text, View} from 'react-native';
+import {UserData, CompanyData} from './components/UserData';
+
+const App = () => {
+  const name = 'Prince';
+  return (
+    <View>
+      <Text
+        style={{
+          backgroundColor: 'royalblue',
+          fontSize: 30,
+          textAlign: 'center',
+          padding: 10,
+          color: '#fff',
+        }}>
+        Company Details
+      </Text>
+      <CompanyData />
+      <UserData />
+    </View>
+  );
+};
+
+export default App;
+
+FileName -> UserData
+
+import {View, Text} from 'react-native';
+
+export const UserData = () => {
+  return (
+    <View>
+      <Text style={{fontSize: 30, backgroundColor: 'green'}}>User Data</Text>
+      <Text style={{fontSize: 20}}>Name : "Prince"</Text>
+      <Text style={{fontSize: 20}}>Age : 22</Text>
+      <Text style={{fontSize: 20}}>email : "prince@test.com"</Text>
+    </View>
+  );
+};
+
+export const CompanyData = () => {
+  return (
+    <View>
+      <Text style={{fontSize: 30, backgroundColor: 'purple'}}>
+        Company Data
+      </Text>
+      <Text style={{fontSize: 20}}>Name : "ABC Company"</Text>
+      <Text style={{fontSize: 20}}>employee : 500</Text>
+      <Text style={{fontSize: 20}}>products : "ABC Products"</Text>
+    </View>
+  );
+};
+
+=> Lecture - 4
+FileName -> App.js
+
+import React from 'react';
+import {Button, Text, View} from 'react-native';
+
+const App = () => {
+  let age = 22;
+  const langauge = val => {
+    age = 100;
+    console.warn(age);
+  };
+
+  return (
+    <View>
+      <Text
+        style={{
+          fontSize: 30,
+        }}>
+        Age : {age}
+      </Text>
+      <Button title="On Press" onPress={langauge} color={'green'} />
+    </View>
+  );
+};
+
+export default App;
+
+
+=> Lecture - 5
+FileName -> App.js
+
+import React, {useState} from 'react';
+import {Button, Text, View} from 'react-native';
+
+const App = () => {
+  const [name, setName] = useState('Prince Sharma');
+
+  function testName() {
+    setName(' Rahul Sharma');
+  }
+  return (
+    <View>
+      <Text style={{fontSize: 30}}>{name}</Text>
+      <Button title="Update Name" onPress={testName} color={'royalblue'} />
+    </View>
+  );
+};
+
+export default App;
+
+
+
+=> Lecture - 6
+FileName -> App.js
+
+import React, {useState} from 'react';
+import {Button, Text, View} from 'react-native';
+import User from './components/Props';
+
+const App = () => {
+  const [name, setName] = useState('Rahul');
+  return (
+    <View>
+      <Text style={{fontSize: 30, textAlign: 'center', margin: 20}}>
+        Props And State Manage
+      </Text>
+      <Button title="Update Name" onPress={() => setName('Prince')} />
+      <User name={name} age="22" />
+    </View>
+  );
+};
+
+export default App;
+
+
+-> FileName - Props.js
+ 
+const {View, Text} = require('react-native');
+
+const User = ({name, age}) => {
+  return (
+    <View>
+      <Text style={{fontSize: 20}}>Name : {name}</Text>
+      <Text style={{fontSize: 20}}>Age : {age}</Text>
+    </View>
+  );
+};
+export default User;
+
+
+=> Lecture - 7
+FileName - App.js
+
+import React, {useState} from 'react';
+import {Button, Text, View, StyleSheet} from 'react-native';
+import styled from './style';
+const App = () => {
+  return (
+    <View>
+      <Text style={styled.lightblue}>Light Blue</Text>
+      <Text style={styled.red}>Red</Text>
+      <Text style={styled.green}>Green</Text>
+      <Text style={styled.yellow}>Yellow</Text>
+      <Text style={styled.royalblue}>Royal Blue</Text>
+    </View>
+  );
+};
+
+export default App;
+
+FileName - style.js
+
+import {StyleSheet} from 'react-native';
+
+export default styled = StyleSheet.create({
+  lightblue: {
+    marginTop: 10,
+    backgroundColor: 'lightblue',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 50,
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
+  },
+  red: {
+    backgroundColor: 'red',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 50,
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
+  },
+  green: {
+    backgroundColor: 'green',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 50,
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
+  },
+  yellow: {
+    backgroundColor: 'yellow',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 50,
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
+  },
+  royalblue: {
+    backgroundColor: 'royalblue',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 50,
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
+  },
+});
+
+
+=> Lecture - 8
+
+fileName - App.js
+
+import React, {useState} from 'react';
+import {Text, View, StyleSheet, TextInput, Button} from 'react-native';
+
+const style = StyleSheet.create({
+  inputBox: {
+    placeholder: 'Enter your name',
+    borderWidth: 2,
+    borderColor: 'royalblue',
+    margin: 20,
+    color: '#fff',
+    placeholder: 'Enter',
+    padding: 10,
+  },
+  textBox: {
+    fontSize: 30,
+    textAlign: 'center',
+  },
+  textBox2: {
+    fontSize: 20,
+    marginLeft: 20,
+  },
+});
+
+const App = () => {
+  const [name, setName] = useState('');
+
+  return (
+    <View>
+      <Text style={style.textBox}>Handle Input Box</Text>
+      <Text style={style.textBox2}>Name : {name}</Text>
+      <TextInput
+        style={style.inputBox}
+        placeholder="Enter your name"
+        value={name}
+        onChangeText={text => setName(text)}
+      />
+
+      <Button title="Crear" onPress={() => setName('')} />
+    </View>
+  );
+};
+
+export default App;
+
+
+
+=> Lecture - 9   --> Register From Handle
+
+fileName - App.js
+
+import React, {useState} from 'react';
+import {Text, View, StyleSheet, TextInput, Button} from 'react-native';
+
+const style = StyleSheet.create({
+  inputBox: {
+    placeholder: 'Enter your name',
+    borderWidth: 2,
+    borderColor: 'royalblue',
+    margin: 20,
+    color: '#fff',
+    placeholder: 'Enter',
+    padding: 10,
+    borderRadius: 5,
+  },
+  textBox: {
+    color: 'white',
+    fontSize: 30,
+    textAlign: 'center',
+    padding: 10,
+    backgroundColor: 'royalblue',
+  },
+  textBox2: {
+    fontSize: 20,
+    marginLeft: 20,
+  },
+  box: {
+    backgroundColor: 'royalblue',
+    color: 'white',
+    padding: 10,
+    margin: 20,
+  },
+});
+
+const App = () => {
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [display, setDisplay] = useState(false);
+
+  const resetFormData = () => {
+    setDisplay(false);
+    setName('');
+    setEmail('');
+    setPassword('');
+  };
+
+  return (
+    <View>
+      <Text style={style.textBox}>Register Page</Text>
+      <TextInput
+        style={style.inputBox}
+        placeholder="Enter user name"
+        value={name}
+        onChangeText={text => setName(text)}
+      />
+      <TextInput
+        style={style.inputBox}
+        placeholder="Enter user password"
+        value={password}
+        secureTextEntry={true}
+        onChangeText={password => setPassword(password)}
+      />
+      <TextInput
+        style={style.inputBox}
+        placeholder="Enter user email"
+        value={email}
+        onChangeText={email => setEmail(email)}
+      />
+      <View style={{margin: 20}}>
+        <Button title="Add" onPress={() => setDisplay(true)} />
+      </View>
+      <View style={{margin: 20}}>
+        <Button title="Clear" color={'red'} onPress={resetFormData} />
+      </View>
+
+      {display ? (
+        <View style={style.box}>
+          <Text>User name is : {name}</Text>
+          <Text>User password is : {password}</Text>
+          <Text>User email is : {email}</Text>
+        </View>
+      ) : null}
+    </View>
+  );
+};
+
+export default App;
+
+
+=> Lecture -> 10
+fileName - App.js
+
+import React from 'react';
+
+import {FlatList, StyleSheet, Text, View} from 'react-native';
+
+const App = () => {
+  const users = [
+    {
+      id: 1,
+      name: 'Prince',
+    },
+    {
+      id: 2,
+      name: 'Rahul',
+    },
+    {
+      id: 3,
+      name: 'Aman',
+    },
+    {
+      id: 4,
+      name: 'Vicky',
+    },
+    {
+      id: 5,
+      name: 'Suraj',
+    },
+  ];
+
+  return (
+    <View>
+      <Text style={{fontSize: 30}}>List and Flat List</Text>
+
+      <FlatList
+        data={users}
+        renderItem={({item}) => <Text style={lists.list}>{item.name}</Text>}
+        keyExtractor={item => item.id}
+      />
+    </View>
+  );
+};
+
+const lists = StyleSheet.create({
+  list: {
+    backgroundColor: 'royalblue',
+    padding: 10,
+    margin: 5,
+    fontSize: 20,
+    color: '#fff',
+  },
+});
+export default App;
+
+
+=> Lecture -> 11
+fileName -> App.js
+
+import React from 'react';
+import {users} from './components/Lists';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
+
+const styles = StyleSheet.create({
+  list: {
+    backgroundColor: 'royalblue',
+    padding: 10,
+    margin: 10,
+    fontSize: 20,
+  },
+});
+
+const App = () => {
+  return (
+    <View>
+      <Text style={{fontSize: 30}}>App components</Text>
+      <ScrollView style={{marginBottom: 60}}>
+        {users.map(item => (
+          <Text style={styles.list}>{item.name}</Text>
+        ))}
+      </ScrollView>
+    </View>
+  );
+};
+export default App;
+
+
+
+
+
+fileName -> Lists.js
+
+export const users = [
+  {
+    id: 1,
+    name: 'Prince',
+  },
+  {
+    id: 2,
+    name: 'Rahul',
+  },
+  {
+    id: 3,
+    name: 'Aman',
+  },
+  {
+    id: 4,
+    name: 'Vicky',
+  },
+  {
+    id: 5,
+    name: 'Suraj',
+  },
+  {
+    id: 6,
+    name: 'Akshay',
+  },
+  {
+    id: 7,
+    name: 'Priti',
+  },
+  {
+    id: 8,
+    name: 'Nikki',
+  },
+  {
+    id: 9,
+    name: 'Himanshu',
+  },
+  {
+    id: 10,
+    name: 'Vishal',
+  },
+  {
+    id: 11,
+    name: 'Anjali',
+  },
+  {
+    id: 12,
+    name: 'Anu',
+  },
+  {
+    id: 13,
+    name: 'Anshu',
+  },
+  {
+    id: 14,
+    name: 'Vishant',
+  },
+];
+
+
+=> Lecture 12 
+fileName -> App.js
+
+import React from 'react';
+import {users} from './components/Lists';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
+
+const App = () => {
+  return (
+    <View>
+      <Text style={styles.text}>Dynamic Grid</Text>
+      <ScrollView style={{marginBottom: 60}}>
+        <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
+          {users.map(item => (
+            <Text style={styles.list}>{item.name}</Text>
+          ))}
+        </View>
+      </ScrollView>
+    </View>
+  );
+};
+export default App;
+
+const styles = StyleSheet.create({
+  list: {
+    backgroundColor: 'royalblue',
+    margin: 5,
+    padding: 5,
+    width: 120,
+    height: 120,
+    textAlignVertical: 'center',
+    textAlign: 'center',
+    fontSize: 20,
+    color: '#fff',
+  },
+  text: {
+    fontSize: 30,
+    color: '#fff',
+    textAlign: 'center',
+  },
+});
+
+
+
+=> Lecture -> 13
+fileName-> App.js
+
+import React from 'react';
+import {users} from './components/List2';
+import {View, Text, StyleSheet, ScrollView, FlatList} from 'react-native';
+
+const App = () => {
+  return (
+    <View>
+      <Text style={styles.text}>Loop With FlatList</Text>
+      <FlatList
+        data={users}
+        renderItem={({item}) => <UserData item={item} />}
+      />
+    </View>
+  );
+};
+
+const UserData = ({item}) => {
+  return (
+    <View style={styles.list}>
+      <Text style={styles.item}>{item.name}</Text>
+      <Text style={styles.item}>{item.email}</Text>
+    </View>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 30,
+    textAlign: 'center',
+    color: 'white',
+  },
+  list: {
+    borderWidth: 2,
+    borderColor: 'royalblue',
+    flexDirection: 'row',
+
+    marginBottom: 10,
+    padding: 10,
+  },
+  item: {
+    textAlign: 'center',
+    flex: 1,
+    margin: 2,
+    color: 'royalblue',
+    fontSize: 25,
+  },
+});
+
+
+
+=> Lecture -> 14
+fileName -> App.js
+
+import React from 'react';
+import {users} from './components/List2';
+import {View, Text, StyleSheet, ScrollView, FlatList} from 'react-native';
+// import UserData from './components/UserData2';
+
+const App = () => {
+  return (
+    <View>
+      <Text style={styles.text}>Loop With FlatList</Text>
+      <FlatList
+        data={users}
+        renderItem={({item}) => <UserData item={item} />}
+      />
+    </View>
+  );
+};
+export default App;
+const UserData = ({item}) => {
+  return (
+    <View style={styles.list}>
+      <Text style={styles.item}>{item.name}</Text>
+      <Text style={styles.item}>{item.email}</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 30,
+    textAlign: 'center',
+    color: 'white',
+  },
+  list: {
+    borderWidth: 2,
+    borderColor: 'royalblue',
+    flexDirection: 'row',
+
+    marginBottom: 10,
+    padding: 10,
+  },
+  item: {
+    textAlign: 'center',
+    flex: 1,
+    margin: 2,
+    color: 'royalblue',
+    fontSize: 25,
+  },
+});
+
+
+=> Lecture -> 15
+
+fileName -> App.js
+
+import React from 'react';
+import {View, Text, StyleSheet, SectionList} from 'react-native';
+import {users} from './components/SectionList';
+
+const App = () => {
+  return (
+    <View>
+      <Text style={styles.title}>Section List</Text>
+      <SectionList
+        sections={users}
+        renderItem={({item}) => <Text style={styles.skills}>{item}</Text>}
+        renderSectionHeader={({section: {name}}) => (
+          <Text style={styles.name}>{name}</Text>
+        )}
+      />
+    </View>
+  );
+};
+export default App;
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 30,
+    textAlign: 'center',
+    color: '#fff',
+  },
+  skills: {
+    fontSize: 20,
+    color: 'white',
+    marginLeft: 70,
+  },
+  name: {
+    marginTop: 20,
+    color: '#fff',
+    fontSize: 30,
+    marginLeft: 10,
+    backgroundColor: 'royalblue',
+    width: 200,
+    padding: 5,
+    textAlign: 'center',
+  },
+});
+
+
+fileName -> SectionList.js
+
+export const users = [
+  {
+    id: 1,
+    name: 'Prince',
+    data: ['React Js', 'Next Js', 'Solidity', 'MongoDB'],
+  },
+  {
+    id: 2,
+    name: 'Rahul',
+    data: ['HTML', 'CSS', 'Javascript'],
+  },
+  {
+    id: 2,
+    name: 'Karan',
+    data: ['Python', 'Machine Learning', 'C Language'],
+  },
+  {
+    id: 4,
+    name: 'Anjali',
+    data: ['Java', 'C++', 'Javascript'],
+  },
+];
+
+
+=> Lecture -> 16 
+fileName -> App.js
+
+import React from 'react';
+import {View, Text, TextInput, Button} from 'react-native';
+import Student from './components/StudentClass';
+
+class App extends React.Component {
+  language = () => {
+    console.warn('React Native');
+  };
+  render() {
+    return (
+      <View>
+        <Text style={{fontSize: 30}}>This is Class Components</Text>
+        <TextInput placeholder="Enter your name" />
+        <Button title="Press Me" onPress={this.language} />
+        <Student />
+      </View>
+    );
+  }
+}
+
+export default App;
+
+
+fileName -> StudentClass.js
+
+import React from 'react';
+import {View, Text} from 'react-native';
+
+class Student extends React.Component {
+  render() {
+    return (
+      <View>
+        <Text style={{fontSize: 25, color: 'green'}}>Student Component</Text>
+      </View>
+    );
+  }
+}
+
+export default Student;
+
+
+
+=> Lecture -> 17
+ ->> Mini Project Counting
+  ->> fileName -> App.js
+
+  import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import UseEffect from './components/LifeCycle/UseEffect';
+
+const App = () => {
+  return (
+    <View>
+      <Text style={styles.title}>Use Effect</Text>
+      <UseEffect />
+    </View>
+  );
+};
+export default App;
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 30,
+    color: '#fff',
+    textAlign: 'center',
+  },
+});
+
+
+  ->> fileName -> UseEffect.js
+
+  import React, {useEffect, useState} from 'react';
+import {View, Text, StyleSheet, Button} from 'react-native';
+
+const UseEffect = () => {
+  const [count, setCount] = useState(0);
+  const [data, setData] = useState(0);
+
+  useEffect(() => {
+    console.warn('Update data');
+  }, [data]);
+
+  useEffect(() => {
+    console.warn('Update Counting ');
+  }, [count]);
+
+  return (
+    <>
+      <View style={styles.box}>
+        <Text style={styles.count}>{count}</Text>
+      </View>
+      <View style={styles.box}>
+        <Text style={styles.count}>{data}</Text>
+      </View>
+      <Button title="Count" onPress={() => setCount(count + 1)} />
+      <Button title="Data" onPress={() => setData(data + 1)} />
+    </>
+  );
+};
+
+export default UseEffect;
+
+const styles = StyleSheet.create({
+  count: {
+    color: 'white',
+    fontSize: 30,
+  },
+  box: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'royalblue',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    marginLeft: 150,
+    marginTop: 20,
+  },
+});
+
+
+=>> Lecture ->> 18
+->> fileName -> App.js
+
+
+import React, {useEffect, useState} from 'react';
+import {View, Text, StyleSheet, Button} from 'react-native';
+import Toggle from './components/ShowHide';
+
+const App = () => {
+  const [show, setShow] = useState(true);
+
+  // Interview Question
+
+  // const timer = setInterval(() => {
+  //   console.warn('Timer Running.');
+  // }, 2000);
+
+  // useEffect(() => {
+  //   return () => clearInterval(timer);
+  // });
+  return (
+    <View>
+      <Text style={styles.title}>Use Effect</Text>
+
+      <Button title="Toggle" onPress={() => setShow(!show)} />
+      {show ? <Toggle /> : ''}
+    </View>
+  );
+};
+export default App;
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 30,
+    color: '#fff',
+    textAlign: 'center',
+  },
+});
+
+
+->> fileName -> UnMount 
+
+import React from 'react';
+import {View, Text, Button, StyleSheet} from 'react-native';
+
+const Unmount = () => {
+  return (
+    <View>
+      <Text style={styles.title}>UseEffect Unmount in Life Cycle </Text>
+    </View>
+  );
+};
+
+export default Unmount;
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 30,
+  },
+});
+
+
+
+
+=>> Lecture => 20
+
+fileName -> App.js
+
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+
+const App = () => {
+  return (
+    <>
+      <View style={styles.box1}>
+        <View style={styles.innerbox1}></View>
+        <View style={styles.innerbox2}></View>
+        <View style={styles.innerbox3}></View>
+      </View>
+      <View style={styles.box2}></View>
+      <View style={styles.box3}></View>
+    </>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  box1: {
+    backgroundColor: '#d5c6e0',
+    flexDirection: 'row',
+    flex: 1,
+  },
+  box2: {
+    backgroundColor: '#ff8fab',
+    flex: 1,
+  },
+  box3: {
+    backgroundColor: '#9f86c0',
+    flex: 1,
+  },
+  innerbox1: {
+    backgroundColor: '#38a3a5',
+    flex: 1,
+    margin: 10,
+  },
+  innerbox2: {
+    backgroundColor: '#5a189a',
+    flex: 1,
+    margin: 10,
+  },
+  innerbox3: {
+    backgroundColor: '#ff5733',
+    flex: 1,
+    margin: 10,
+  },
+});
+
+
+
+
+=>> Lecture => 21
+fileName -> App.js
+
+import {StyleSheet, Text, View} from 'react-native';
+import React, {Component} from 'react';
+import CustomButton from './components/CustomButton';
+
+export class App extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <CustomButton />
+      </View>
+    );
+  }
+}
+
+export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+
+
+->> CustomButton -> 
+fileName -> CustomButton.js 
+
+import React from 'react';
+import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
+
+const CustomButton = () => {
+  return (
+    <>
+      <View style={styles.container}>
+        <TouchableHighlight>
+          <Text style={[styles.button, styles.success]}>Sucess</Text>
+        </TouchableHighlight>
+        <TouchableHighlight>
+          <Text style={[styles.button, styles.primary]}>Warning</Text>
+        </TouchableHighlight>
+        <TouchableHighlight>
+          <Text style={[styles.button, styles.error]}>Press Me</Text>
+        </TouchableHighlight>
+        <TouchableHighlight>
+          <Text style={[styles.button, styles.yellow]}>Click Here</Text>
+        </TouchableHighlight>
+      </View>
+    </>
+  );
+};
+
+export default CustomButton;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  button: {
+    backgroundColor: '#2a9d8f',
+    color: '#fff',
+    padding: 10,
+    margin: 20,
+    textAlign: 'center',
+    fontSize: 18,
+    borderRadius: 25,
+    width: 200,
+  },
+  success: {
+    backgroundColor: '#06d6a0',
+  },
+  primary: {
+    backgroundColor: '#00b4d8',
+  },
+  error: {
+    backgroundColor: '#c9184a',
+  },
+  yellow: {
+    backgroundColor: '#ffcb77',
+  },
+});
+
+
+=>> Lecture => 22
+->> ==> Mini Project 2 >>- =>>
+fileName -> App.js
+
+import {StyleSheet, Text, View} from 'react-native';
+import React, {Component} from 'react';
+import RadioButton from './components/RadioButton';
+
+export class App extends Component {
+  render() {
+    return (
+      <>
+        <Text style={styles.title}>Technical Skills</Text>
+        <View style={styles.container}>
+          <RadioButton />
+        </View>
+      </>
+    );
+  }
+}
+
+export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#52b69a',
+    borderWidth: 2,
+    margin: 40,
+  },
+  title: {
+    color: '#52b69a',
+    fontSize: 30,
+    textAlign: 'center',
+    marginTop: 20,
+  },
+});
+
+->> fileName -> RadioButton.js
+
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {skills} from './Skills';
+
+const RadioButton = () => {
+  const [selectedRadio, setSelectedRadio] = useState(1);
+  return (
+    <>
+      {skills.map((item, index) => (
+        <TouchableOpacity key={index} onPress={() => setSelectedRadio(item.id)}>
+          <View style={styles.radioWrapper}>
+            <View style={styles.radio}>
+              {selectedRadio === item.id ? (
+                <View style={styles.radioBg}></View>
+              ) : null}
+            </View>
+            <Text style={styles.radioText}>{item.name}</Text>
+          </View>
+        </TouchableOpacity>
+      ))}
+    </>
+  );
+};
+
+export default RadioButton;
+
+const styles = StyleSheet.create({
+  radioWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  radioText: {
+    fontSize: 25,
+    color: '#52b69a',
+  },
+  radio: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    borderColor: '#52b69a',
+    borderWidth: 2,
+    margin: 10,
+  },
+  radioBg: {
+    width: 30,
+    height: 30,
+    backgroundColor: '#52b69a',
+    borderRadius: 15,
+    margin: 3,
+  },
+});
+
+
+
+->> fileName -> Skills.js
+
+export const skills = [
+  {
+    id: 1,
+    name: 'Java',
+  },
+  {
+    id: 2,
+    name: 'React Js',
+  },
+  {
+    id: 3,
+    name: 'React Native',
+  },
+  {
+    id: 4,
+    name: 'Express Js',
+  },
+  {
+    id: 5,
+    name: 'MongoDB',
+  },
+  {
+    id: 6,
+    name: 'C++',
+  },
+  {
+    id: 7,
+    name: 'C Langauge',
+  },
+  {
+    id: 8,
+    name: 'Javascript',
+  },
+  {
+    id: 9,
+    name: 'Next Js',
+  },
+  {
+    id: 10,
+    name: 'Typscript',
+  },
+];
+
+
+=>> Lecture -> 23 
+--> fileName -> App.js
+
+import {ActivityIndicator, Button, StyleSheet, Text, View} from 'react-native';
+import React, {Component, useState} from 'react';
+import Loader from './components/ActivityIndicator';
+
+const App = () => {
+  return (
+    <>
+      <Text style={styles.title}>Loader</Text>
+      <Loader />
+    </>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  title: {
+    color: '#52b69a',
+    fontSize: 30,
+    textAlign: 'center',
+    marginTop: 20,
+  },
+});
+
+
+--> fileName -> ActivityIndicator.js 
+
+import {ActivityIndicator, Button, StyleSheet, View} from 'react-native';
+import React, {useState} from 'react';
+
+const Loader = () => {
+  const [show, setShow] = useState(false);
+
+  setTimeout(() => {
+    setShow(false);
+  }, 5000);
+
+  return (
+    <>
+      <View style={styles.container}>
+        {show ? <ActivityIndicator size={'large'} color={'#52b69a'} /> : null}
+        <Button title="Show Loader" onPress={() => setShow(true)} />
+      </View>
+    </>
+  );
+};
+
+export default Loader;
+
+const styles = StyleSheet.create({
+  title: {
+    color: '#52b69a',
+    fontSize: 30,
+    textAlign: 'center',
+    marginTop: 20,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+
+
+=>> Lecture => 23  =<< Mini Project Dialog Box >>=
+->> fileName -> App.js 
+
+import React from 'react';
+import {View, Text, Button, StyleSheet} from 'react-native';
+import Dialog from './components/Modal';
+
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <Dialog />
+    </View>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+=>> fileName -> Model.js 
+
+import React, {useState} from 'react';
+import {View, Text, Button, StyleSheet, Modal} from 'react-native';
+
+const Dialog = () => {
+  const [show, setShow] = useState(false);
+  return (
+    <>
+      <Modal transparent={true} visible={show} animationType="fade">
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.text}>I am Modal and Dialog Box</Text>
+            <Button
+              title="Close"
+              color={'#465775'}
+              onPress={() => setShow(false)}
+            />
+          </View>
+        </View>
+      </Modal>
+      <View style={styles.openButton}>
+        <Button title="Open" color={'#59C9A5'} onPress={() => setShow(true)} />
+      </View>
+    </>
+  );
+};
+
+export default Dialog;
+
+const styles = StyleSheet.create({
+  openButton: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    padding: 25,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalView: {
+    backgroundColor: '#59C9A5',
+    padding: 30,
+    borderRadius: 5,
+  },
+  text: {
+    fontSize: 25,
+    marginBottom: 15,
+  },
+});
+
+
+
+=>> Lecture = 24 
+
+fileName -> App.js
+
+import React from 'react';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
+
+const App = () => {
+  return (
+    <View style={styles.container}>
+      <Pressable
+        // onPress={() => console.warn('Normal Press')}
+        onLongPress={() => console.warn('Long Press')}
+        onPressIn={() => console.warn('Press In')}
+        onPressOut={() => console.warn('Press Out')}>
+        <Text style={styles.btn}>Click Me</Text>
+      </Pressable>
+    </View>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btn: {
+    backgroundColor: '#3a86ff',
+    width: 200,
+    fontSize: 20,
+    padding: 15,
+    borderRadius: 50,
+    textAlign: 'center',
+    color: 'white',
+  },
+});
+
+
+=>> Lecture 25 
+
+fileName -> App.js
+
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, StatusBar, Button} from 'react-native';
+
+const App = () => {
+  const [hide, setHide] = useState(false);
+  const [style, seStyle] = useState('light-content');
+  return (
+    <View style={styles.container}>
+      <StatusBar backgroundColor={'#8d99ae'} barStyle={style} hidden={hide} />
+
+      <Button title="Toggle" onPress={() => setHide(!hide)} />
+      <Button title="Add Style" onPress={() => seStyle('dark-content')} />
+    </View>
+  );
+};
+
+export default App;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 30,
+    gap: 10,
+  },
+});
+
+
+
+

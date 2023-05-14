@@ -1,0 +1,156 @@
+=<< Navigation >>=
+
+=> React Navigation 
+--> commond -> npm install @react-navigation/native
+
+=> Installing dependencies into a bare React Native project
+--> commond -> npm install react-native-screens react-native-safe-area-context
+
+=> Installing the native stack navigator library
+--> commond -> npm install @react-navigation/native-stack
+
+--> App.js
+
+import React from 'react';
+import {View, Text, StyleSheet, Button} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Login from './screen/Login';
+import Home from './screen/Home';
+
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+  return (
+    <>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={
+            {
+              // headerStyle: {
+              //   backgroundColor: '#3a86ff',
+              // },
+            }
+          }>
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{
+              headerTitle: () => (
+                <Button onPress={eventCalled} title="User Login" />
+              ),
+              headerRight: () => <Register />,
+              // headerStyle: {
+              //   backgroundColor: '#8338ec',
+              // },
+            }}
+          />
+
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
+  );
+};
+
+const Register = () => <Button title="Register" />;
+const eventCalled = () => console.warn('Login called');
+
+export default App;
+
+const styles = StyleSheet.create({});
+
+
+
+--> Login.js
+
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Button, TextInput} from 'react-native';
+
+const Login = props => {
+  const [name, setName] = useState('');
+  const age = 20;
+  return (
+    <View>
+      <Text style={styles.title}>Login Screen</Text>
+
+      <TextInput
+        placeholder="Enter your name"
+        style={styles.inputBox}
+        onChangeText={text => setName(text)}
+      />
+
+      <View style={styles.btn}>
+        <Button
+          title="Home"
+          onPress={() => props.navigation.navigate('Home', {name, age})}
+        />
+      </View>
+      {/* <View style={styles.btn}>
+        <Button
+          title="Register"
+          onPress={() => props.navigation.navigate('Register')}
+        />
+      </View> */}
+    </View>
+  );
+};
+
+export default Login;
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 30,
+    color: 'black',
+    textAlign: 'center',
+    margin: 20,
+  },
+  btn: {
+    padding: 30,
+  },
+  inputBox: {
+    borderWidth: 2,
+    borderRadius: 25,
+    padding: 5,
+    borderColor: '#ccc',
+  },
+});
+
+
+--> Home.js 
+
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+
+const Home = props => {
+  const {name, age} = props.route.params;
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Home Screen</Text>
+      <Text style={styles.title}> Name : {name}</Text>
+      <Text style={styles.title}>Age : {age}</Text>
+    </View>
+  );
+};
+
+export default Home;
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 30,
+    color: 'black',
+    textAlign: 'center',
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+});
+
+
+
+--> Cache memory clear 
+
+=<< : npm start --clean-cache
+

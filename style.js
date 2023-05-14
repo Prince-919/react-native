@@ -1,0 +1,50 @@
+import {StyleSheet} from 'react-native';
+
+export default styled = StyleSheet.create({
+  lightblue: {
+    marginTop: 10,
+    backgroundColor: 'lightblue',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 50,
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
+  },
+  red: {
+    backgroundColor: 'red',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 50,
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
+  },
+  green: {
+    backgroundColor: 'green',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 50,
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
+  },
+  yellow: {
+    backgroundColor: 'yellow',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 50,
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
+  },
+  royalblue: {
+    backgroundColor: 'royalblue',
+    padding: 20,
+    marginBottom: 10,
+    borderRadius: 50,
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center',
+  },
+});
